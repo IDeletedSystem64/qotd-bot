@@ -68,9 +68,6 @@ function formatQuotes(quotes, page) {
 	}
 	str += `\n*Page ${page+1} of ${pages}*`;
 
-	console.log(str.length);
-	console.log(2000 - `\n*Page ${page+1} of ${pages}*`.length - "__**Quotes**__\n\n".length);
-
 	return str;
 }
 
