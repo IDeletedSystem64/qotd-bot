@@ -79,8 +79,6 @@ client.on("ready", () => {
 	for (let g of client.guilds.cache) {
 		readSettings(g[0]);
 	}
-
-	formatQuotes(getSettings("1002104690999304213").quotes, 0);
 })
 client.on("guildCreate", (guild) => {
 	readSettings(guild.id);
