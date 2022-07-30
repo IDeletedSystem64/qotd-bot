@@ -1,0 +1,10 @@
+{
+	"dataDir": "data/",
+	"defaultSettings": {
+		"channel": "",
+		"schedule": "0 6 * * * *",
+		"quotes": [
+
+		]
+	}
+}

@@ -1,0 +1,27 @@
+{
+	"name": "qotd-bot",
+	"version": "0.1.0",
+	"description": "Post a random quote upon request",
+	"main": "src/index.js",
+	"scripts": {
+		"start": "node src/index.js",
+		"deploy": "node src/deploy.js",
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/idliketobeatree/qotd-bot.git"
+	},
+	"keywords": [
+		"discord"
+	],
+	"author": "idliketobeatree",
+	"license": "Zlib",
+	"bugs": {
+		"url": "https://github.com/idliketobeatree/qotd-bot/issues"
+	},
+	"homepage": "https://github.com/idliketobeatree/qotd-bot#readme",
+	"dependencies": {
+		"discord.js": "^14.0.3"
+	}
+}
