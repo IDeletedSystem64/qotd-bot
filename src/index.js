@@ -84,7 +84,7 @@ client.on("guildCreate", (guild) => {
 client.on("guildDelete", (guild) => {
 	settings.delete(guild.id)
 	// Leave settings stored on disk just in case they re-add the bot
-});
+})
 client.on("interactionCreate", async (interaction) => {
 	if (!interaction.isChatInputCommand()) {
 		return;
