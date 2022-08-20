@@ -2,3 +2,5 @@
 /data/**
 .DS_Store
 /notes.md
+/node_modules
+.vscode
