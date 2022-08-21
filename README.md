@@ -3,6 +3,7 @@ Sends a random quote to Discord upon request (scheduled is planned)
 ### Allowing the bot to post on Discord:
 
 Run ``npm install`` to download and install bot dependencies
+<br>
 Create a file `account.json` in the project root and fill in the following information:
 ```
 {
