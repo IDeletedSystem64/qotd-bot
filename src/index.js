@@ -2,11 +2,29 @@ const common = require("./common.js");
 const settings = require("../funcs/settings.js");
 
 const Discord = require("discord.js");
+const fs = require("fs");
 
 var account = common.readJsonSync("account.json"); // private bot info
 
 var client = new Discord.Client({ intents: [Discord.GatewayIntentBits.Guilds] });
 
+
+fs.readdirSync('evts')
+  .filter(file => file.endsWith('.js'))
+  .map(file => require(`../evts/${file}`))
+  .forEach(({ once, event, listener }) => {
+    client[once ? 'once' : 'on'](event, listener);
+});
+// Create listeners from file
+
+client.commands = new Discord.Collection();
+fs.readdirSync('cmds')
+	.filter(file => file.endsWith('.js'))
+	.forEach(file => {
+		const cmd = require(`../cmds/${file}`);
+		client.commands.set(cmd.name, cmd);
+});
+// Create a collection and load commands from file
 
 function formatQuotes(quotes, page) {
 	if (quotes.length === 0) {
@@ -46,23 +64,6 @@ function formatQuotes(quotes, page) {
 }
 
 
-client.on("ready", () => {
-	console.log("Bot is online!");
-	console.log(`Logged in as ${client.user.tag}!`);
-
-	// TODO get this to work asynchronously
-	for (let g of client.guilds.cache) {
-		settings.read(g[0]);
-	}
-});
-
-client.on("guildCreate", (guild) => {
-	settings.read(guild.id);
-});
-client.on("guildDelete", (guild) => {
-	settings.delete(guild.id)
-	// Leave settings stored on disk just in case they re-add the bot
-})
 client.on("interactionCreate", async (interaction) => {
 	if (!interaction.isChatInputCommand()) {
 		return;
